@@ -29,7 +29,9 @@ const Logo = props => {
 		>
 			<img 
 				className={imgClass} 
-				src={`${LOGO_SRC_PATH}logo-${mode}-${type}.png`} 
+				// src={`${LOGO_SRC_PATH}logo-${mode}-${type}.png`}
+				src={`${LOGO_SRC_PATH}alferix-logo.png`} 
+
 				alt={`${APP_NAME} logo`}
 			/>
 		</div>

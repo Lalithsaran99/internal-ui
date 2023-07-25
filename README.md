@@ -1,1 +1,1 @@
-# Elstar React Admin Template 
+# Alferix React Admin Template 

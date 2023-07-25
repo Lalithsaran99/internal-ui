@@ -19,11 +19,10 @@ const CollapsedItem = ({title, translateKey, children}) => {
 
 const DefaultItem = (props) => {
 
-	const { nav, onLinkClick, sideCollapsed, userAuthority } = props
-
+	const { nav, onLinkClick, sideCollapsed, userAuthority } = props	
 	return (
 		<AuthorityCheck userAuthority={userAuthority} authority={nav.authority}>
-			<MenuItem key={nav.key} eventKey={nav.key} className="mb-2">
+			<MenuItem key={nav.key} eventKey={nav.key} className="mb-2 rounded-sm">
 				<Link 
 					to={nav.path} 
 					onClick={() => onLinkClick?.({

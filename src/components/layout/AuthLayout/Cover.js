@@ -11,8 +11,8 @@ const Cover = ({children, content, ...rest }) => {
 			>
 				<Logo mode="dark" />
 				<div>
-					<h3 className="text-white mb-4">Jump start your project with Elstar</h3>
-					<p className="text-lg text-white opacity-80 max-w-[700px]">Elstar comes with a complete set of UI components crafted with Tailwind CSS, it fulfilled most of the use case to create modern and beautiful UI and application</p>
+					<h3 className="text-white mb-4">Jump start your project with Alferix</h3>
+					<p className="text-lg text-white opacity-80 max-w-[700px]">Alferix comes with a complete set of UI components crafted with Tailwind CSS, it fulfilled most of the use case to create modern and beautiful UI and application</p>
 				</div>
 				<span className="text-white">Copyright  &copy;  {`${new Date().getFullYear()}`} <span className="font-semibold">{`${APP_NAME}`}</span> </span>
 			</div>

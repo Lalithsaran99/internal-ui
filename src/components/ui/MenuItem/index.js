@@ -1,7 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types';
-
+import {
+	NAV_MODE_THEMED
+} from 'constants/theme.constant'
 const MenuItem = React.forwardRef((props, ref) => {
 
 	const {
@@ -16,9 +18,8 @@ const MenuItem = React.forwardRef((props, ref) => {
 		style,
 		variant,
 		...rest
-	} = props
-	
-	const menuItemActiveClass = `menu-item-active`
+	} = props	
+	const menuItemActiveClass = `menu-item-active border-r-4 ${variant===NAV_MODE_THEMED?"border-orange-600":"border-blue-600"} border-transparent`
 	const menuItemHoverClass = `menu-item-hoverable`
 	const disabledClass = 'menu-item-disabled'
 	const menuItemClass = classNames(
@@ -39,7 +40,7 @@ const MenuItem = React.forwardRef((props, ref) => {
 	return (
 		<Component 
 			ref={ref} 
-			className={menuItemClass} 
+			className={`${menuItemClass}`} 
 			style={{height: `${menuItemHeight}px`, ...style}} 
 			onClick={hanldeOnClick}
 			{...rest}

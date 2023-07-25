@@ -34,7 +34,7 @@ const DefaultItem = ({nav, onLinkClick, userAuthority}) => {
 							authority={subNav.authority}
 							key={subNav.key}
 						>
-							<MenuItem eventKey={subNav.key}> 
+							<MenuItem eventKey={subNav.key} className="rounded-sm"> 
 								{subNav.path 
 									? 
 									<Link 

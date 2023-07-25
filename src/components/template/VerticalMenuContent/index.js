@@ -99,7 +99,7 @@ const VerticalMenuContent = props => {
 
 	return (
 		<Menu
-			className="px-4 pb-4"
+			className="text-center"
 			variant={navMode} 
 			sideCollapsed={collapsed}
 			defaultActiveKeys={activedRoute?.key ? [activedRoute.key] : []}
