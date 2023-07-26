@@ -19,7 +19,7 @@ const MenuItem = React.forwardRef((props, ref) => {
 		variant,
 		...rest
 	} = props	
-	const menuItemActiveClass = `menu-item-active border-r-4 ${variant===NAV_MODE_THEMED?"border-orange-600":"border-blue-600"} border-transparent`
+	const menuItemActiveClass = `menu-item-active border-r-4 ${variant === NAV_MODE_THEMED ? 'border-orange-600' : 'border-blue-600'}`
 	const menuItemHoverClass = `menu-item-hoverable`
 	const disabledClass = 'menu-item-disabled'
 	const menuItemClass = classNames(

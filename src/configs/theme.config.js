@@ -1,4 +1,4 @@
-import { THEME_ENUM } from 'constants/theme.constant'
+import { NAV_MODE_THEMED, THEME_ENUM } from 'constants/theme.constant'
 
 /**
  * Since some configurations need to be match with specific themes, 
@@ -14,9 +14,10 @@ export const themeConfig = {
     cardBordered: true,
     panelExpand: false,
     controlSize: 'md',
-    navMode: 'transparent',
+    navMode: NAV_MODE_THEMED,
     layout: {
         type: THEME_ENUM.LAYOUT_TYPE_MODERN,
         sideNavCollapse: false,
     },
 }
+

@@ -1,0 +1,105 @@
+export const people = [
+  {
+    id:1,
+    name: "Leslie Alexander",
+    email: "leslie.alexander@example.com",
+    role: "Co-Founder / CEO",
+    city: "Los Angles",
+    age:20,
+    imageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    lastSeen: "3h ago",
+    lastSeenDateTime: "2023-01-23T13:23Z",
+  },
+  {
+    id:2,
+    name: "Michael Foster",
+    email: "michael.foster@example.com",
+    role: "Co-Founder / CTO",
+    city: "Chicago",
+    age:28,
+    imageUrl:
+      "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    lastSeen: "3h ago",
+    lastSeenDateTime: "2023-01-23T13:23Z",
+  },
+  {
+    id:3,
+    name: "Dries Vincent",
+    email: "dries.vincent@example.com",
+    role: "Business Relations",
+    city: "Houston",
+    age:30,
+    imageUrl:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    lastSeen: null,
+  },
+  {
+    id:4,
+    name: "Lindsay Walton",
+    email: "lindsay.walton@example.com",
+    city: "Washington",
+    role: "Front-end Developer",
+    age:28,
+    imageUrl:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    lastSeen: "3h ago",
+    lastSeenDateTime: "2023-01-23T13:23Z",
+  },
+  {
+    id:5,
+    name: "Courtney Henry",
+    email: "courtney.henry@example.com",
+    city: "Bucharest, Romania",
+    role: "Designer",
+    age:26,
+    imageUrl:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    lastSeen: "3h ago",
+    lastSeenDateTime: "2023-01-23T13:23Z",
+  },
+  {
+    id:6,
+    name: "Tom Cook",
+    email: "tom.cook@example.com",
+    role: "Director of Product",
+    city: "Bucharest, Romania",
+    age:23,
+    imageUrl:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    lastSeen: null,
+  },
+  {
+    id:7,
+    name: "Tom Cook",
+    email: "tom.cook@example.com",
+    role: "Director of Product",
+    city: "Bucharest, Romania",
+    age:23,
+    imageUrl:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    lastSeen: null,
+  },
+  {
+    id:8,
+    name: "Tom Cook",
+    email: "tom.cook@example.com",
+    role: "Director of Product",
+    city: "Bucharest, Romania",
+    age:23,
+    imageUrl:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    lastSeen: null,
+  },
+  {
+    id:9,
+    name: "Tom Cook",
+    email: "tom.cook@example.com",
+    city: "Bucharest, Romania",
+    role: "Director of Product",
+    age:23,
+    imageUrl:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    lastSeen: null,
+  },
+];
