@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-const Collapse = ({ title, children }) => {
+const Collapse = ({ props }) => {
+  const { title, children, className } = props;
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const handleToggle = () => {
@@ -9,9 +10,9 @@ const Collapse = ({ title, children }) => {
   };
 
   return (
-    <div className="border rounded-lg mb-4">
+    <div className={`${className} border rounded-lg mb-4`}>
       <div
-        className="p-4 cursor-pointer flex justify-between items-center"
+        className={`${className} p-4 cursor-pointer flex justify-between items-center`}
         onClick={handleToggle}
       >
         <h2 className="text-xl">{title}</h2>
@@ -33,12 +34,16 @@ const Collapse = ({ title, children }) => {
         </svg>
       </div>
       <div
-        className={classNames("p-4 bg-gray-100", {
-          "max-h-0 overflow-hidden": !isCollapsed,
-          "max-h-[200px]": isCollapsed,
+        className={classNames("p-4 bg-gray-100 overflow-hidden", {
+          "slide-right": isCollapsed,
+          "slide-left": !isCollapsed,
         })}
       >
-        {children}
+        <div
+          className={classNames("max-w-0", { "max-w-[200px]": isCollapsed })}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 export const labelConfig = {
   alferix: {
     contacts: "Contacts",
+    home: "Home",
     edit: "Edit",
     delete: "Delete",
     close: "Close",

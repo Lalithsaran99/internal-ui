@@ -3,16 +3,12 @@ import labelManager from "configs/label.config/label-manager";
 import { useState } from "react";
 import { HiOutlineDotsHorizontal, HiTrash, HiX } from "react-icons/hi";
 
-export const ButtonGroup = ({
-  onClickEdit,
-  onClickDelete,
-  isEdit,
-  setEdit,
-}) => {
+export const ButtonGroup = ({ props }) => {
+  const { onClickEdit, onClickDelete, isEditVisible, setEditClose } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   const onClickClose = () => {
-    setEdit(false);
+    setEditClose(false);
   };
 
   const handleToggle = () => {
@@ -38,7 +34,7 @@ export const ButtonGroup = ({
                 <span className="text-red-500">{labelManager.delete}</span>
               </div>
             </li>
-            {isEdit ? (
+            {isEditVisible ? (
               <li
                 onClick={onClickClose}
                 className="px-4 py-2 hover:bg-gray-100 cursor-pointer "

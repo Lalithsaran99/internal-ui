@@ -3,9 +3,9 @@ import { useConfig } from "components/ui";
 export const List = ({ data, setId, id }) => {
   const { mode } = useConfig();
   const activeColor = mode === "light" ? "bg-gray-100 " : " ";
-  
+
   return (
-    <ul role="list" className="divide-y divide-gray-100">
+    <ul role="list" className="divide-y divide-gray-100 overflow-y-scroll">
       {data.map((person, index) => (
         <li
           key={index}
