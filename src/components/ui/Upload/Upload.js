@@ -189,8 +189,8 @@ const Upload = React.forwardRef(( props, ref) => {
 			{tip}
 			{showList && (
 				<div className="upload-file-list">
-					{files.map((file, index) => (
-						<FileItem file={file} key={file.name + index}>
+					{files?.map((file, index) => (
+						<FileItem file={file} key={file?.name + index}>
 							<CloseButton onClick={() => removeFile(index)} className="upload-file-remove" />
 						</FileItem>
 					))}

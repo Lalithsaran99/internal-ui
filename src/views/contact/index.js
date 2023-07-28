@@ -8,15 +8,16 @@ import labelManager from "configs/label.config/label-manager";
 import { useEffect, useState } from "react";
 import { List } from "../../components/shared/list";
 import { people } from "./data";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const [contactId, setContactId] = useState();
   const [contact, setContact] = useState();
-  const [isEdit, setIsEdit] = useState(false);
-  const [isOpen, setIsOpen] = useState(true); // Set initial state to 'true' if you want the menu to be open by default
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(true);
 
   const onClickEdit = () => {
-    setIsEdit(true);
+    navigate(`/contact/edit/${contactId}`);
   };
 
   const toggleMenu = () => {
@@ -33,9 +34,7 @@ const Contact = () => {
   }, [contactId]);
 
   const handleSubmit = (values, { setSubmitting }) => {
-    // Handle form submission logic here (e.g., API calls, etc.)
     console.log(values);
-    setIsEdit(false);
     setSubmitting(false);
   };
 
@@ -47,8 +46,6 @@ const Contact = () => {
   const buttonGroupProps = {
     onClickEdit,
     onClickDelete,
-    isEditVisible: isEdit,
-    setEditClose: setIsEdit,
   };
 
   return (
@@ -85,11 +82,7 @@ const Contact = () => {
         <div
           className={`${isOpen ? "h-[100vh] col-span-1 sm:col-span-2" : ""}`}
         >
-          {!isEdit ? (
-            <Profile data={contact} />
-          ) : (
-            <ProfileEdit props={editProps} />
-          )}
+          <Profile data={contact} />
         </div>
       </div>
     </div>
