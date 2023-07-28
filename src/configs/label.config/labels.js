@@ -1,6 +1,9 @@
 export const labelConfig = {
   alferix: {
     employees: "Employees",
+    employee: "Employee",
+    empId: "empId",
+    navigateToLeave: "Go to Leave Calendar",
     home: "Home",
     edit: "Edit",
     delete: "Delete",
@@ -91,7 +94,7 @@ export const labelConfig = {
       accountType: "Account Type",
       bankName: "Bank Name",
       accountHolderName: "Account Holder Name",
-      accountDetails:"Account Details"
+      accountDetails: "Account Details",
     },
     financialInfoLowerCase: {
       accountNo: "accountNo",

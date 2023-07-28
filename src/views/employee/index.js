@@ -33,16 +33,6 @@ const Contact = () => {
     setContact(people.find((id) => id.id === contactId));
   }, [contactId]);
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
-    setSubmitting(false);
-  };
-
-  const editProps = {
-    handleSubmit,
-    data: employee,
-  };
-
   const buttonGroupProps = {
     onClickEdit,
     onClickDelete,

@@ -1,4 +1,9 @@
+import { Button } from "components/ui";
+import labelManager from "configs/label.config/label-manager";
+import { useNavigate } from "react-router-dom";
+
 export const Profile = ({ data }) => {
+  const navigate = useNavigate();
   return (
     <div className="p-4 bg-white shadow mt-24">
       <div className="grid grid-cols-1 md:grid-cols-3">
@@ -17,7 +22,17 @@ export const Profile = ({ data }) => {
         <p className="font-light text-gray-600 mt-3">{data?.city}</p>
         <p className="mt-8 text-gray-500">{data?.role}</p>
         <p className="mt-2 text-gray-500">{data?.email}</p>
+
+        <div className="text-center p-4">
+          <Button
+            variant="solid"
+            onClick={() => navigate(`/employee/leave/${data?.id}`)}
+          >
+            {labelManager.navigateToLeave}
+          </Button>
+        </div>
       </div>
+
       <div className="mt-12 flex flex-col justify-center">
         <p className="text-gray-600 text-center font-light lg:px-16">
           An artist of considerable range, Ryan — the name taken by
