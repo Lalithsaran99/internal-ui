@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-const Collapse = ({ props }) => {
+const Collapse = (props) => {
   const { title, children, className } = props;
   const [isCollapsed, setIsCollapsed] = useState(false);
 

@@ -139,6 +139,7 @@ const personalInformation = ({
                     label={labelManager.personalInformation.lastName}
                     invalid={errors.lastName && touched.lastName}
                     errorMessage={errors.lastName}
+                    asterisk={true}
                   >
                     <Field
                       type="text"
@@ -153,6 +154,7 @@ const personalInformation = ({
                   label={labelManager.personalInformation.email}
                   invalid={errors.email && touched.email}
                   errorMessage={errors.email}
+                  asterisk={true}
                 >
                   <Field
                     type="email"
@@ -167,6 +169,7 @@ const personalInformation = ({
                     label={labelManager.personalInformation.gender}
                     invalid={errors.gender && touched.gender}
                     errorMessage={errors.gender}
+                    asterisk={true}
                   >
                     <Field
                       name={labelManager.personalInformationLowerCase.gender}
@@ -191,6 +194,7 @@ const personalInformation = ({
                     label={labelManager.personalInformation.maritalStatus}
                     invalid={errors.maritalStatus && touched.maritalStatus}
                     errorMessage={errors.maritalStatus}
+                    asterisk={true}
                   >
                     <Field
                       name={
@@ -220,6 +224,7 @@ const personalInformation = ({
                   label={labelManager.personalInformation.nationality}
                   invalid={errors.nationality && touched.nationality}
                   errorMessage={errors.nationality}
+                  asterisk={true}
                 >
                   <Field
                     name={labelManager.personalInformationLowerCase.nationality}
@@ -250,6 +255,7 @@ const personalInformation = ({
                       (errors.phoneNumber && touched.phoneNumber)
                     }
                     errorMessage="Please enter your phone number"
+                    asterisk={true}
                   >
                     <InputGroup>
                       <Field
@@ -306,6 +312,7 @@ const personalInformation = ({
                     label={labelManager.personalInformation.dob}
                     invalid={errors.dob && touched.dob}
                     errorMessage={errors.dob}
+                    asterisk={true}
                   >
                     <Field
                       name={labelManager.personalInformationLowerCase.dob}

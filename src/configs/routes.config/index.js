@@ -13,16 +13,16 @@ export const protectedRoutes = [
         authority: [],
     },
     {
-        key: 'contact',
-        path: '/contact',
-        component: React.lazy(() => import('../../views/contact')),
+        key: 'employee',
+        path: '/employee',
+        component: React.lazy(() => import('../../views/employee')),
         authority: [],
     },
 
     {
-        key: 'contact.edit',
-        path: '/contact/edit/:id',
-        component: React.lazy(() => import('../../views/contact/edit-contact')),
+        key: 'employee.edit',
+        path: '/employee/edit/:id',
+        component: React.lazy(() => import('../../views/employee/edit-employee')),
         authority: [],
     },
     /** Example purpose only */

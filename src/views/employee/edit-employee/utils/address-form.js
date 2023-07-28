@@ -39,6 +39,7 @@ export const AddressForm = (props) => {
           label={labelManager.addressInfo.country}
           invalid={getError(countryName) && getTouched(countryName)}
           errorMessage={getError(countryName)}
+          asterisk={true}
         >
           <Field name={countryName}>
             {({ field, form }) => (
@@ -59,6 +60,7 @@ export const AddressForm = (props) => {
           label={labelManager.addressInfo.addressLine1}
           invalid={getError(addressLine1Name) && getTouched(addressLine1Name)}
           errorMessage={getError(addressLine1Name)}
+          asterisk={true}
         >
           <Field
             type="text"
@@ -74,6 +76,7 @@ export const AddressForm = (props) => {
           label={labelManager.addressInfo.addressLine2}
           invalid={getError(addressLine2Name) && getTouched(addressLine2Name)}
           errorMessage={getError(addressLine2Name)}
+          asterisk={true}
         >
           <Field
             type="text"
@@ -87,6 +90,7 @@ export const AddressForm = (props) => {
           label={labelManager.addressInfo.city}
           invalid={getError(cityName) && getTouched(cityName)}
           errorMessage={getError(cityName)}
+          asterisk={true}
         >
           <Field
             type="text"
@@ -102,6 +106,7 @@ export const AddressForm = (props) => {
           label={labelManager.addressInfo.state}
           invalid={getError(stateName) && getTouched(stateName)}
           errorMessage={getError(stateName)}
+          asterisk={true}
         >
           <Field
             type="text"
@@ -115,6 +120,7 @@ export const AddressForm = (props) => {
           label={labelManager.addressInfo.zipCode}
           invalid={getError(zipCodeName) && getTouched(zipCodeName)}
           errorMessage={getError(zipCodeName)}
+          asterisk={true}
         >
           <Field
             type="text"

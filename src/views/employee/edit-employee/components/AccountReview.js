@@ -14,7 +14,7 @@ const AccountReview = () => {
 			<p>
 				Your account application is currently under review & will be finalize shortly. 
 				<br/> 
-				To fast track your account proccessing, you can try to contact our customer services.
+				To fast track your account proccessing, you can try to employee our customer services.
 			</p>
 		</div>
 	)

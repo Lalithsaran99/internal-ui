@@ -80,6 +80,7 @@ const FinancialInformation = ({
                       label={labelManager.financialInfo.accountNo}
                       invalid={errors.accountNo && touched.accountNo}
                       errorMessage={errors.accountNo}
+                      asterisk={true}
                     >
                       <Field
                         type="text"
@@ -94,6 +95,7 @@ const FinancialInformation = ({
                       label={labelManager.financialInfo.ifsc}
                       invalid={errors.ifsc && touched.ifsc}
                       errorMessage={errors.ifsc}
+                      asterisk={true}
                     >
                       <Field
                         type="text"
@@ -110,6 +112,7 @@ const FinancialInformation = ({
                     label={labelManager.financialInfo.accountType}
                     invalid={errors.accountType && touched.accountType}
                     errorMessage={errors.accountType}
+                    asterisk={true}
                   >
                     <Field
                       type="text"
@@ -126,6 +129,7 @@ const FinancialInformation = ({
                         errors.accountHolderName && touched.accountHolderName
                       }
                       errorMessage={errors.accountHolderName}
+                      asterisk={true}
                     >
                       <Field
                         type="text"
@@ -143,6 +147,7 @@ const FinancialInformation = ({
                       label={labelManager.financialInfo.bankName}
                       invalid={errors.bankName && touched.bankName}
                       errorMessage={errors.bankName}
+                      asterisk={true}
                     >
                       <Field
                         type="text"

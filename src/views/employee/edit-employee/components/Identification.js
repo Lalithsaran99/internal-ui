@@ -13,6 +13,9 @@ import { DocumentUploadField } from "components/shared/DocumentUploadField";
 import labelManager from "configs/label.config/label-manager";
 import * as Yup from "yup";
 
+import { CollapseTopToBottom } from "components/shared/CollapseTopToBottom";
+import { useState } from "react";
+
 const validationSchema = Yup.object().shape({
   documentType: Yup.string().required("Please select your document type"),
   passportCover: Yup.string().when("documentType", {
@@ -76,12 +79,24 @@ const Identification = ({
 }) => {
   const { textTheme, bgTheme } = useThemeClass();
 
+  const [passportCollapse, setPassPortCollapse] = useState(false);
+  const [passportDataCoverCollapse, setPassportDataCoverCollapse] =
+    useState(false);
+
   const onNext = (values, setSubmitting) => {
     onNextChange?.(values, "identification", setSubmitting);
   };
 
   const onBack = () => {
     onBackChange?.();
+  };
+
+  const onPassportCollapse = () => {
+    setPassPortCollapse(!passportCollapse);
+  };
+
+  const onPassportDataCoverCollapse = () => {
+    setPassportDataCoverCollapse(!passportDataCoverCollapse);
   };
 
   const beforeUpload = (files) => {
@@ -125,6 +140,7 @@ const Identification = ({
                   label={labelManager.identityInfo.documentTypeHeader}
                   invalid={errors.documentType && touched.documentType}
                   errorMessage={errors.documentType}
+                  asterisk={true}
                 >
                   <Field name={labelManager.identityInfo.documentTypeLowerCase}>
                     {({ field, form }) => (
@@ -199,95 +215,131 @@ const Identification = ({
                     ))}
                   </ul>
                 </div>
-                <div className="grid xl:grid-cols-2 gap-4">
+                <div>
                   {values.documentType === "passport" && (
                     <>
-                      <DocumentUploadField
-                        name="passportCover"
-                        label="Passport Cover"
-                        beforeUpload={beforeUpload}
-                        {...validatedProps}
+                      <CollapseTopToBottom
+                        collapse={passportCollapse}
+                        title={"Passport Cover"}
+                        onCollapse={onPassportCollapse}
                       >
-                        <DoubleSidedImage
-                          className="mx-auto mb-3"
-                          src="/img/thumbs/passport.png"
-                          darkModeSrc="/img/thumbs/passport-dark.png"
-                          alt=""
-                        />
-                      </DocumentUploadField>
-                      <DocumentUploadField
-                        name="passportDataPage"
-                        label="Passport Data Page"
-                        beforeUpload={beforeUpload}
-                        {...validatedProps}
+                        <DocumentUploadField
+                          name="passportCover"
+                          label="Passport Cover"
+                          beforeUpload={beforeUpload}
+                          {...validatedProps}
+                        >
+                          <DoubleSidedImage
+                            className="mx-auto mb-3"
+                            src="/img/thumbs/passport.png"
+                            darkModeSrc="/img/thumbs/passport-dark.png"
+                            alt=""
+                          />
+                        </DocumentUploadField>
+                      </CollapseTopToBottom>
+                      <CollapseTopToBottom
+                        collapse={passportDataCoverCollapse}
+                        title={"Passport Data Cover"}
+                        onCollapse={onPassportDataCoverCollapse}
                       >
-                        <DoubleSidedImage
-                          className="mx-auto mb-3"
-                          src="/img/thumbs/passport-data.png"
-                          darkModeSrc="/img/thumbs/passport-data-dark.png"
-                          alt=""
-                        />
-                      </DocumentUploadField>
+                        <DocumentUploadField
+                          name="passportDataPage"
+                          label="Passport Data Page"
+                          beforeUpload={beforeUpload}
+                          {...validatedProps}
+                        >
+                          <DoubleSidedImage
+                            className="mx-auto mb-3"
+                            src="/img/thumbs/passport-data.png"
+                            darkModeSrc="/img/thumbs/passport-data-dark.png"
+                            alt=""
+                          />
+                        </DocumentUploadField>
+                      </CollapseTopToBottom>
                     </>
                   )}
                   {values.documentType === "nationalId" && (
                     <>
-                      <DocumentUploadField
-                        name="nationalIdFront"
-                        label="National Id Front"
-                        beforeUpload={beforeUpload}
-                        {...validatedProps}
+                      <CollapseTopToBottom
+                        collapse={passportCollapse}
+                        title={"National Id Front"}
+                        onCollapse={onPassportCollapse}
                       >
-                        <DoubleSidedImage
-                          className="mx-auto mb-3"
-                          src="/img/thumbs/id-card-front.png"
-                          darkModeSrc="/img/thumbs/id-card-front-dark.png"
-                          alt=""
-                        />
-                      </DocumentUploadField>
-                      <DocumentUploadField
-                        name="nationalIdBack"
-                        label="National Id Back"
-                        beforeUpload={beforeUpload}
-                        {...validatedProps}
+                        <DocumentUploadField
+                          name="nationalIdFront"
+                          label="National Id Front"
+                          beforeUpload={beforeUpload}
+                          {...validatedProps}
+                        >
+                          <DoubleSidedImage
+                            className="mx-auto mb-3"
+                            src="/img/thumbs/id-card-front.png"
+                            darkModeSrc="/img/thumbs/id-card-front-dark.png"
+                            alt=""
+                          />
+                        </DocumentUploadField>
+                      </CollapseTopToBottom>
+                      <CollapseTopToBottom
+                        collapse={passportCollapse}
+                        title={"National Id Back"}
+                        onCollapse={onPassportCollapse}
                       >
-                        <DoubleSidedImage
-                          className="mx-auto mb-3"
-                          src="/img/thumbs/id-card-back.png"
-                          darkModeSrc="/img/thumbs/id-card-back-dark.png"
-                          alt=""
-                        />
-                      </DocumentUploadField>
+                        <DocumentUploadField
+                          name="nationalIdBack"
+                          label="National Id Back"
+                          beforeUpload={beforeUpload}
+                          {...validatedProps}
+                        >
+                          <DoubleSidedImage
+                            className="mx-auto mb-3"
+                            src="/img/thumbs/id-card-back.png"
+                            darkModeSrc="/img/thumbs/id-card-back-dark.png"
+                            alt=""
+                          />
+                        </DocumentUploadField>
+                      </CollapseTopToBottom>
                     </>
                   )}
                   {values.documentType === "driversLicense" && (
                     <>
-                      <DocumentUploadField
-                        name="driversLicenseFront"
-                        label="Drivers License Front"
-                        beforeUpload={beforeUpload}
-                        {...validatedProps}
+                      <CollapseTopToBottom
+                        collapse={passportCollapse}
+                        title={"Drivers License Front"}
+                        onCollapse={onPassportCollapse}
                       >
-                        <DoubleSidedImage
-                          className="mx-auto mb-3"
-                          src="/img/thumbs/drivers-license-front.png"
-                          darkModeSrc="/img/thumbs/drivers-license-front-dark.png"
-                          alt=""
-                        />
-                      </DocumentUploadField>
-                      <DocumentUploadField
-                        name="driversLicenseBack"
-                        label="Drivers License Back"
-                        beforeUpload={beforeUpload}
-                        {...validatedProps}
+                        <DocumentUploadField
+                          name="driversLicenseFront"
+                          label="Drivers License Front"
+                          beforeUpload={beforeUpload}
+                          {...validatedProps}
+                        >
+                          <DoubleSidedImage
+                            className="mx-auto mb-3"
+                            src="/img/thumbs/drivers-license-front.png"
+                            darkModeSrc="/img/thumbs/drivers-license-front-dark.png"
+                            alt=""
+                          />
+                        </DocumentUploadField>
+                      </CollapseTopToBottom>
+                      <CollapseTopToBottom
+                        collapse={passportCollapse}
+                        title={"Drivers License Back"}
+                        onCollapse={onPassportCollapse}
                       >
-                        <DoubleSidedImage
-                          className="mx-auto mb-3"
-                          src="/img/thumbs/drivers-license-back.png"
-                          darkModeSrc="/img/thumbs/drivers-license-back-dark.png"
-                          alt=""
-                        />
-                      </DocumentUploadField>
+                        <DocumentUploadField
+                          name="driversLicenseBack"
+                          label="Drivers License Back"
+                          beforeUpload={beforeUpload}
+                          {...validatedProps}
+                        >
+                          <DoubleSidedImage
+                            className="mx-auto mb-3"
+                            src="/img/thumbs/drivers-license-back.png"
+                            darkModeSrc="/img/thumbs/drivers-license-back-dark.png"
+                            alt=""
+                          />
+                        </DocumentUploadField>
+                      </CollapseTopToBottom>
                     </>
                   )}
                 </div>

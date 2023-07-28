@@ -12,12 +12,12 @@ import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const [contactId, setContactId] = useState();
-  const [contact, setContact] = useState();
+  const [employee, setContact] = useState();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
 
   const onClickEdit = () => {
-    navigate(`/contact/edit/${contactId}`);
+    navigate(`/employee/edit/${contactId}`);
   };
 
   const toggleMenu = () => {
@@ -40,7 +40,7 @@ const Contact = () => {
 
   const editProps = {
     handleSubmit,
-    data: contact,
+    data: employee,
   };
 
   const buttonGroupProps = {
@@ -51,7 +51,7 @@ const Contact = () => {
   return (
     <div className="container-fluid">
       <div className="flex justify-between">
-        <h3 className="mb-4">{labelManager.contacts}</h3>
+        <h3 className="mb-4">{labelManager.employees}</h3>
         <ButtonGroup props={buttonGroupProps} />
       </div>
       <div
@@ -82,7 +82,7 @@ const Contact = () => {
         <div
           className={`${isOpen ? "h-[100vh] col-span-1 sm:col-span-2" : ""}`}
         >
-          <Profile data={contact} />
+          <Profile data={employee} />
         </div>
       </div>
     </div>
