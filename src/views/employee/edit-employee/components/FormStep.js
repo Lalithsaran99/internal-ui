@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Menu } from "components/ui";
 import { HiCheckCircle, HiLockClosed } from "react-icons/hi";
 import useThemeClass from "utils/hooks/useThemeClass";
@@ -20,6 +20,7 @@ const FormStep = ({
   stepStatus,
 }) => {
   const { textTheme } = useThemeClass();
+	const navMode = useSelector(state => state.theme.navMode)
   const dispatch = useDispatch();
 
   const onStepChange = (step) => {
@@ -39,7 +40,7 @@ const FormStep = ({
   };
 
   return (
-    <Menu variant="transparent" sideCollapsed={sideCollapsed} className="px-2">
+    <Menu variant={navMode} sideCollapsed={sideCollapsed} className="h-full">
       {steps.map((step) => (
         <Menu.MenuItem
           key={step.value}
