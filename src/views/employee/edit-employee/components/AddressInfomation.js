@@ -3,6 +3,7 @@ import labelManager from "configs/label.config/label-manager";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { AddressForm } from "../utils/address-form";
+import { FormFooterButton } from "components/shared/FormFooterButton";
 
 const validationSchema = Yup.object().shape({
   country: Yup.string().required("Please select country"),
@@ -86,16 +87,17 @@ const AddressInfomation = ({
                   zipCodeName={labelManager.addressInfoLowerCase.zipCode}
                   {...formProps}
                 />
-                <div className="flex justify-end gap-2">
-                  <Button type="button" onClick={onBack}>
-                    {labelManager.back}
-                  </Button>
-                  <Button loading={isSubmitting} variant="solid" type="submit">
-                    {currentStepStatus === "complete"
+                <FormFooterButton
+                  isNegativeButtonVisible={true}
+                  negativeButtonLabel={labelManager.back}
+                  positiveButtonLabel={
+                    currentStepStatus === "complete"
                       ? labelManager.save
-                      : labelManager.next}
-                  </Button>
-                </div>
+                      : labelManager.next
+                  }
+                  loading={isSubmitting}
+                  onNegativeClick={onBack}
+                />
               </FormContainer>
             </Form>
           );

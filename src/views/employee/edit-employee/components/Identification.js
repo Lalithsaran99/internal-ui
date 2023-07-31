@@ -15,6 +15,7 @@ import * as Yup from "yup";
 
 import { CollapseTopToBottom } from "components/shared/CollapseTopToBottom";
 import { useState } from "react";
+import { FormFooterButton } from "components/shared/FormFooterButton";
 
 const validationSchema = Yup.object().shape({
   documentType: Yup.string().required("Please select your document type"),
@@ -343,16 +344,17 @@ const Identification = ({
                     </>
                   )}
                 </div>
-                <div className="flex justify-end gap-2">
-                  <Button type="button" onClick={onBack}>
-                    {labelManager.back}
-                  </Button>
-                  <Button loading={isSubmitting} variant="solid" type="submit">
-                    {currentStepStatus === "complete"
+                <FormFooterButton
+                  negativeButtonLabel={labelManager.back}
+                  isNegativeButtonVisible={true}
+                  positiveButtonLabel={
+                    currentStepStatus === "complete"
                       ? labelManager.save
-                      : labelManager.next}
-                  </Button>
-                </div>
+                      : labelManager.next
+                  }
+                  loading={isSubmitting}
+                  onNegativeClick={onBack}
+                />
               </FormContainer>
             </Form>
           );

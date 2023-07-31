@@ -1,3 +1,4 @@
+import { FormFooterButton } from "components/shared/FormFooterButton";
 import { Button, FormContainer, FormItem, Input } from "components/ui";
 import labelManager from "configs/label.config/label-manager";
 import { Field, Form, Formik } from "formik";
@@ -159,14 +160,13 @@ const FinancialInformation = ({
                     </FormItem>
                   </div>
                 </div>
-                <div className="flex justify-end gap-2">
-                  <Button type="button" onClick={onBack}>
-                    {labelManager.back}
-                  </Button>
-                  <Button loading={isSubmitting} variant="solid" type="submit">
-                    {labelManager.submit}
-                  </Button>
-                </div>
+                <FormFooterButton
+                  positiveButtonLabel={labelManager.submit}
+                  negativeButtonLabel={labelManager.back}
+                  isNegativeButtonVisible={true}
+                  loading={isSubmitting}
+                  onNegativeClick={onBack}
+                />
               </FormContainer>
             </Form>
           );

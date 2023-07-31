@@ -23,7 +23,7 @@ const FinancialInformation = lazy(() =>
 const EditContact = () => {
   const [isOpen, setIsOpen] = useState(true);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const stepStatus = useSelector(
     (state) => state.accountDetailForm.data.stepStatus
   );
@@ -56,14 +56,13 @@ const EditContact = () => {
   };
 
   const onComplete = (values, name) => {
-    
     dispatch(setFormData({ [name]: values }));
     dispatch(
       setStepStatus({
-        [currentStep]: { status: "complete" },        
+        [currentStep]: { status: "complete" },
       })
     );
-    navigate(-1)
+    navigate(-1);
   };
 
   const handleBackChange = () => {
@@ -152,7 +151,7 @@ const EditContact = () => {
               {currentStep === 3 && (
                 <FinancialInformation
                   data={formData.financialInformation}
-                  onNextChange={onComplete}
+                  onComplete={onComplete}
                   onBackChange={handleBackChange}
                   currentStepStatus={currentStepStatus}
                 />

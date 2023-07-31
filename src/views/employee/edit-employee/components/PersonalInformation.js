@@ -14,6 +14,7 @@ import { statusOptions } from "../constants";
 import { components } from "react-select";
 import * as Yup from "yup";
 import labelManager from "configs/label.config/label-manager";
+import { FormFooterButton } from "components/shared/FormFooterButton";
 
 const { SingleValue } = components;
 
@@ -331,13 +332,14 @@ const personalInformation = ({
                     </Field>
                   </FormItem>
                 </div>
-                <div className="flex justify-end gap-2">
-                  <Button loading={isSubmitting} variant="solid" type="submit">
-                    {currentStepStatus === "complete"
+                <FormFooterButton
+                  positiveButtonLabel={
+                    currentStepStatus === "complete"
                       ? labelManager.save
-                      : labelManager.next}
-                  </Button>
-                </div>
+                      : labelManager.next
+                  }
+                  loading={isSubmitting}
+                />
               </FormContainer>
             </Form>
           );
