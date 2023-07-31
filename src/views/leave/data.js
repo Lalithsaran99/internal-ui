@@ -1,63 +1,42 @@
 export const leaveData = [
   {
-    text: "Holiday 1",
-    empId: 1,
-    startDate: new Date("2023-07-01T00:00:00.000Z"),
-    endDate: new Date("2023-06-02T00:00:00.000Z"),
+    month: "July 2023",
+    data: [
+      {
+        leaveType: "Casual Leave",
+        date: "28-07-2023",
+        status: "Accepted",
+      },
+      {
+        leaveType: "Casual Leave",
+        date: "15-07-2023",
+        status: "Rejected",
+      },
+      {
+        leaveType: "Sick Leave",
+        date: "01-07-2023",
+        status: "Accepted",
+      },
+    ],
   },
   {
-    text: "Holiday 2",
-    empId: 1,
-    startDate: new Date("2023-07-04T00:00:00.000Z"),
-    endDate: new Date("2023-07-05T00:00:00.000Z"),
-  },
-
-  {
-    text: "Holiday 1",
-    empId: 2,
-    startDate: new Date("2023-07-01T00:00:00.000Z"),
-    endDate: new Date("2023-06-02T00:00:00.000Z"),
-  },
-  {
-    text: "Holiday 2",
-    empId: 2,
-    startDate: new Date("2023-07-04T00:00:00.000Z"),
-    endDate: new Date("2023-07-05T00:00:00.000Z"),
-  },
-  {
-    text: "Holiday 1",
-    empId: 3,
-    startDate: new Date("2023-07-01T00:00:00.000Z"),
-    endDate: new Date("2023-06-02T00:00:00.000Z"),
-  },
-  {
-    text: "Holiday 2",
-    empId: 3,
-    startDate: new Date("2023-07-04T00:00:00.000Z"),
-    endDate: new Date("2023-07-05T00:00:00.000Z"),
-  },
-  {
-    text: "Holiday 1",
-    empId: 4,
-    startDate: new Date("2023-07-01T00:00:00.000Z"),
-    endDate: new Date("2023-06-02T00:00:00.000Z"),
-  },
-  {
-    text: "Holiday 2",
-    empId: 4,
-    startDate: new Date("2023-07-04T00:00:00.000Z"),
-    endDate: new Date("2023-07-05T00:00:00.000Z"),
-  },
-  {
-    text: "Holiday 1",
-    empId: 5,
-    startDate: new Date("2023-07-01T00:00:00.000Z"),
-    endDate: new Date("2023-06-02T00:00:00.000Z"),
-  },
-  {
-    text: "Holiday 2",
-    empId: 5,
-    startDate: new Date("2023-07-04T00:00:00.000Z"),
-    endDate: new Date("2023-07-05T00:00:00.000Z"),
+    month: "June 2023",
+    data: [
+      {
+        leaveType: "Casual Leave",
+        date: "12-06-2023",
+        status: "Rejected",
+      },
+      {
+        leaveType: "Comp Off",
+        date: "02-06-2023",
+        status: "Accepted",
+      },
+      {
+        leaveType: "Sick Leave",
+        date: "01-06-2023",
+        status: "Accepted",
+      },
+    ],
   },
 ];

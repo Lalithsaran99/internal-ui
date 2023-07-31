@@ -1,50 +1,31 @@
+import { Tabs } from "components/ui";
+import TabList from "components/ui/Tabs/TabList";
+import TabNav from "components/ui/Tabs/TabNav";
 import labelManager from "configs/label.config/label-manager";
-import { leaveData } from "./data";
-import { Calendar } from "components/ui/Calendar";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { people } from "views/employee/data";
+import { LeaveGrid } from "./leave-grid";
 
-const currentDate = new Date();
-const groups = [labelManager.empId];
-const views = ["month", "week", "day",];
-
-const LeaveCalendar = () => {
-  const [employee, setEmployee] = useState();
-
-  const params = useParams();
-
-  useEffect(() => {
-    if (!params?.id) return;
-    setEmployee(people.find((id) => id?.id === Number(params?.id)));
-  }, [params?.id]);
-
-  const employees = [
-    {
-      text: employee?.name,
-      id: employee?.id,
-      avatar: employee?.imageUrl,
-      age: employee?.age,
-      leaveBalance: employee?.leaveBalance,
-      rejectedLeave: employee?.rejectedLeave,
-      totalHolidays: employee?.totalHolidays,
-      totalLeave: employee?.totalLeave,
-    },
-  ];
-
+const Leave = () => {
   return (
     <>
-      <h3 className="mb-4">Leave Calendar</h3>
-      <Calendar
-        data={leaveData}
-        resourceData={employees}
-        groups={groups}
-        currentDate={currentDate}
-        views={views}
-        resourceLabel={labelManager.employee}
-        resourceFieldExpr={labelManager.empId}
-      />
+      <h3 className="mb-2">{labelManager.leaves}</h3>
+      <Tabs value={labelManager.allValue} variant="pill">
+        <div className="flex lg:items-center justify-between flex-col lg:flex-row gap-4">
+          <TabList>
+            <TabNav value={labelManager.allValue}>{labelManager.all}</TabNav>
+            <TabNav value={labelManager.holidayValue}>
+              {labelManager.holidays}
+            </TabNav>
+            <TabNav value={labelManager.sickLeaveValue}>
+              {labelManager.sickLeave}
+            </TabNav>
+            <TabNav value={labelManager.casualLeaveValue}>
+              {labelManager.casualLeave}
+            </TabNav>
+          </TabList>
+        </div>
+        <LeaveGrid />
+      </Tabs>
     </>
   );
 };
-export default LeaveCalendar;
+export default Leave;

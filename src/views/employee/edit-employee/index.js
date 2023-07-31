@@ -1,13 +1,17 @@
 import { AdaptableCard, Container, NavToggle } from "components/shared";
 import { Button } from "components/ui";
-import { Suspense, lazy, useMemo, useState } from "react";
+import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { injectReducer } from "store/index";
 import FormStep from "./components/FormStep";
 import reducer from "./store";
 import { setFormData, setStepStatus } from "./store/dataSlice";
 import { setCurrentStep } from "./store/stateSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import NavToggleArrow from "components/shared/NavToggleArrow";
+import { people } from "../data";
+import { HiArrowLeft } from "react-icons/hi";
+import { BackButtonWithHeader } from "components/shared/BackButtonWithHeader";
 
 injectReducer("accountDetailForm", reducer);
 
@@ -22,6 +26,8 @@ const FinancialInformation = lazy(() =>
 
 const EditContact = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const params = useParams();
+  const [employee, setEmployee] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const stepStatus = useSelector(
@@ -37,6 +43,11 @@ const EditContact = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    if (!params?.id) return;
+    setEmployee(people.find((id) => Number(params?.id) === id?.id));
+  }, [params?.id]);
 
   // useEffect(() => {
   //   dispatch(getForm());
@@ -78,13 +89,14 @@ const EditContact = () => {
   return (
     <Container className="h-full">
       <AdaptableCard className="h-full" bodyClass="h-full">
+        <BackButtonWithHeader header={employee?.name + `'s ` + "Profile"} />
         {currentStep !== 4 && (
           <Button
             onClick={toggleMenu}
             shape="circle"
             variant="plain"
             className={`${isOpen ? "hidden" : ""}`}
-            icon={<NavToggle className="text-2xl" toggled={isOpen} />}
+            icon={<NavToggleArrow className="text-2xl" toggled={isOpen} />}
           />
         )}
         <div
@@ -112,7 +124,7 @@ const EditContact = () => {
                 onClick={toggleMenu}
                 shape="circle"
                 variant="plain"
-                icon={<NavToggle className="text-2xl" toggled={isOpen} />}
+                icon={<NavToggleArrow className="text-2xl" toggled={isOpen} />}
               />
             </div>
           )}

@@ -26,8 +26,13 @@ export const protectedRoutes = [
   {
     key: "employee.leave",
     path: "/employee/leave/:id",
-    component: React.lazy(() => import("../../views/leave")),
+    component: React.lazy(() => import("../../views/leave/leave-calendar")),
     authority: [],
+  },
+  {
+    key: "leave",
+    path: "/leave",
+    component: React.lazy(() => import("../../views/leave")),
   },
   /** Example purpose only */
   // {

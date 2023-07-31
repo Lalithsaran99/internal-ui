@@ -1,6 +1,7 @@
 export const ResourceCell = (props) => {
   const {
     data: {
+      color,
       data: {
         text,
         avatar,
@@ -11,6 +12,7 @@ export const ResourceCell = (props) => {
       },
     },
   } = props;
+
   return (
     <div className="flex justify-between">
       <div className="p-2">

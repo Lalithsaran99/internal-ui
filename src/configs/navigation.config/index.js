@@ -26,6 +26,16 @@ const navigationConfig = [
     authority: [],
     subMenu: [],
   },
+  {
+    key: "leave",
+    path: "/leave",
+    title: labelManager.leave,
+    translateKey: "nav.leave",
+    icon: "leave",
+    type: NAV_ITEM_TYPE_ITEM,
+    authority: [],
+    subMenu: [],
+  },
   /** Example purpose only */
   // {
   //     key: 'singleMenuItem',

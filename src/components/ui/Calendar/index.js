@@ -11,10 +11,10 @@ export const Calendar = (props) => {
     resourceData,
     resourceLabel,
     resourceFieldExpr,
+    editing,
   } = props;
   return (
     <Scheduler
-      timeZone="America/Los_Angeles"
       dataSource={data}
       resourceCellComponent={ResourceCell}
       groups={groups}
@@ -26,6 +26,7 @@ export const Calendar = (props) => {
       firstDayOfWeek={1}
       startDayHour={8}
       endDayHour={18}
+      editing={editing}
     >
       <Resource
         label={resourceLabel}
