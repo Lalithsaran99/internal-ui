@@ -6,11 +6,12 @@ export const FormFooterButton = (props) => {
     isNegativeButtonVisible,
     negativeButtonLabel,
     positiveButtonLabel,
+    positiveButtonIcon,
     loading,
   } = props;
 
   return (
-    <div className="flex justify-end gap-2">
+    <div className="flex justify-end gap-2 sticky -bottom-1 -mx-8 px-8 py-4 border-t bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
       {isNegativeButtonVisible && (
         <Button type="button" onClick={() => onNegativeClick()}>
           {negativeButtonLabel}

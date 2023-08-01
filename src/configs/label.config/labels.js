@@ -41,7 +41,7 @@ export const labelConfig = {
       maritalStatus: "Marital Status",
       nationality: "Nationality",
       phoneNumber: "Phone Number",
-      dob: "Date of birth",
+      dob: "Date of Birth",
       dialCode: "Dial Code",
       age: "Age",
       city: "City",

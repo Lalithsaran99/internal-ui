@@ -16,7 +16,7 @@ export const ButtonGroup = ({ props }) => {
   };
   return (
     <InputGroup size="sm">
-      <Button variant="solid" onClick={() => onClickEdit()}>
+      <Button variant="solid" onClick={() => onClickEdit?.()}>
         {labelManager.edit}
       </Button>
       <Button onClick={handleToggle}>
@@ -26,7 +26,7 @@ export const ButtonGroup = ({ props }) => {
         <div className="absolute top-20 right-0 bg-white shadow-lg rounded">
           <ul className="py-2">
             <li
-              onClick={() => onClickDelete()}
+              onClick={() => onClickDelete?.()}
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer "
             >
               <div className="flex justify-between items-center">

@@ -20,7 +20,7 @@ const FormStep = ({
   stepStatus,
 }) => {
   const { textTheme } = useThemeClass();
-	const navMode = useSelector(state => state.theme.navMode)
+  const navMode = useSelector((state) => state.theme.navMode);
   const dispatch = useDispatch();
 
   const onStepChange = (step) => {
@@ -40,7 +40,7 @@ const FormStep = ({
   };
 
   return (
-    <Menu variant={navMode} sideCollapsed={sideCollapsed} className="h-full">
+    <Menu variant="transparent" sideCollapsed={sideCollapsed} className="px-2">
       {steps.map((step) => (
         <Menu.MenuItem
           key={step.value}

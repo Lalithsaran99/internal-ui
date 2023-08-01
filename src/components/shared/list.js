@@ -12,7 +12,7 @@ export const List = ({ data, setId, id }) => {
           onClick={() => setId(person?.id)}
           className={`${
             person?.id === id ? activeColor : ""
-          }hover-color-change hover:bg-gray-100 transition duration-200 flex cursor-pointer justify-between gap-x-6 py-5`}
+          }hover-color-change hover:bg-gray-100 transition duration-200 flex cursor-pointer justify-between gap-x-6 py-2`}
         >
           <div className="flex gap-x-4">
             <img

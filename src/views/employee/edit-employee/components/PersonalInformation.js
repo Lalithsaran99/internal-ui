@@ -1,20 +1,20 @@
+import { FormFooterButton } from "components/shared/FormFooterButton";
 import {
+  DatePicker,
+  FormContainer,
+  FormItem,
   Input,
   InputGroup,
-  Button,
-  DatePicker,
   Select,
-  FormItem,
-  FormContainer,
 } from "components/ui";
+import "./styles.css";
+import labelManager from "configs/label.config/label-manager";
+import { countryList } from "constants/countries.constant";
 import { Field, Form, Formik } from "formik";
 import NumberFormat from "react-number-format";
-import { countryList } from "constants/countries.constant";
-import { statusOptions } from "../constants";
 import { components } from "react-select";
 import * as Yup from "yup";
-import labelManager from "configs/label.config/label-manager";
-import { FormFooterButton } from "components/shared/FormFooterButton";
+import { statusOptions } from "../constants";
 
 const { SingleValue } = components;
 
@@ -25,6 +25,7 @@ const genderOptions = [
 ];
 
 const NumberInput = (props) => {
+  console.log(props);
   return <Input {...props} value={props.field.value} />;
 };
 
@@ -296,6 +297,7 @@ const personalInformation = ({
                             <NumberFormatInput
                               form={form}
                               field={field}
+                              className="z-0"
                               customInput={NumberInput}
                               placeholder={
                                 labelManager.personalInformation.phoneNumber

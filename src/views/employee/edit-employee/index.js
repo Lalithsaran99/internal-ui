@@ -1,17 +1,16 @@
-import { AdaptableCard, Container, NavToggle } from "components/shared";
+import { AdaptableCard, Container } from "components/shared";
+import { BackButtonWithHeader } from "components/shared/BackButtonWithHeader";
+import NavToggleArrow from "components/shared/NavToggleArrow";
 import { Button } from "components/ui";
 import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { injectReducer } from "store/index";
+import { people } from "../data";
 import FormStep from "./components/FormStep";
 import reducer from "./store";
 import { setFormData, setStepStatus } from "./store/dataSlice";
 import { setCurrentStep } from "./store/stateSlice";
-import { useNavigate, useParams } from "react-router-dom";
-import NavToggleArrow from "components/shared/NavToggleArrow";
-import { people } from "../data";
-import { HiArrowLeft } from "react-icons/hi";
-import { BackButtonWithHeader } from "components/shared/BackButtonWithHeader";
 
 injectReducer("accountDetailForm", reducer);
 

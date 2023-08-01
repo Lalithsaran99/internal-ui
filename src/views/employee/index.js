@@ -3,12 +3,13 @@ import { NavToggle } from "components/shared";
 import { ButtonGroup } from "components/shared/button-group";
 import { Profile } from "components/shared/profile";
 import { ProfileEdit } from "components/shared/profile-edit";
-import { Button } from "components/ui";
+import { Button, Input, InputGroup } from "components/ui";
 import labelManager from "configs/label.config/label-manager";
 import { useEffect, useState } from "react";
 import { List } from "../../components/shared/list";
 import { people } from "./data";
 import { useNavigate } from "react-router-dom";
+import { HiOutlineSearch } from "react-icons/hi";
 
 const Contact = () => {
   const [contactId, setContactId] = useState();
@@ -49,25 +50,24 @@ const Contact = () => {
       >
         <Button
           onClick={toggleMenu}
-          shape="circle"
-          variant="plain"
           className={`${isOpen ? "hidden" : ""}`}
           icon={<NavToggle className="text-2xl" toggled={isOpen} />}
         />
         <div
           className={`${isOpen ? "block" : "hidden"} col-span-1 sm:col-span-1`}
         >
-          <div className="flex">
-            <div className="w-full">
-              <List data={people} setId={setContactId} id={contactId} />
-            </div>
+          <InputGroup className="mb-4">
             <Button
               onClick={toggleMenu}
-              shape="circle"
-              variant="plain"
               icon={<NavToggle className="text-2xl" toggled={isOpen} />}
             />
-          </div>
+            <Input
+              placeholder="Search"
+              className="z-10"
+              suffix={<HiOutlineSearch className="text-lg" />}
+            />
+          </InputGroup>
+          <List data={people} setId={setContactId} id={contactId} />
         </div>
         <div
           className={`${isOpen ? "h-[100vh] col-span-1 sm:col-span-2" : ""}`}
