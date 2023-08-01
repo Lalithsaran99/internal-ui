@@ -1,10 +1,8 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Menu } from "components/ui";
-import { HiCheckCircle, HiLockClosed } from "react-icons/hi";
-import useThemeClass from "utils/hooks/useThemeClass";
-import { setCurrentStep } from "../store/stateSlice";
+import { useDispatch } from "react-redux";
 import { setStepStatus } from "../store/dataSlice";
+import { setCurrentStep } from "../store/stateSlice";
+import { EmployeeMenuIcon } from "../utils/EmployeeMenuIcon";
 
 const steps = [
   { label: "Personal information", value: 0 },
@@ -19,8 +17,6 @@ const FormStep = ({
   sideCollapsed,
   stepStatus,
 }) => {
-  const { textTheme } = useThemeClass();
-  const navMode = useSelector((state) => state.theme.navMode);
   const dispatch = useDispatch();
 
   const onStepChange = (step) => {
@@ -41,36 +37,25 @@ const FormStep = ({
 
   return (
     <Menu variant="transparent" sideCollapsed={sideCollapsed} className="px-2">
-      {steps.map((step) => (
-        <Menu.MenuItem
-          key={step.value}
-          eventKey={step.value.toString()}
-          className={`mb-2`}
-          onClick={() => onStepChange(step.value)}
-          isActive={currentStep === step.value}
-        >
-          <span className="text-2xl ltr:mr-2 rtl:ml-2">
-            {stepStatus[step.value].status === "complete" && (
-              <HiCheckCircle className={textTheme} />
-            )}
-            {stepStatus[step.value].status === "current" && (
-              <HiCheckCircle className="text-gray-400" />
-            )}
-            {stepStatus[step.value].status === "pending" &&
-              currentStep === step.value && (
-                <HiCheckCircle className="text-gray-400" />
-              )}
-            {stepStatus[step.value].status === "pending" &&
-              currentStep !== step.value && (
-                <HiLockClosed className="text-gray-400" />
-              )}
-            {stepStatus[step.value].status === "invalid" && (
-              <HiCheckCircle className="text-gray-400" />
-            )}
-          </span>
-          <span>{step.label}</span>
-        </Menu.MenuItem>
-      ))}
+      {steps.map((step) => {
+        return (
+          <Menu.MenuItem
+            key={step.value}
+            eventKey={step.value.toString()}
+            className={`mb-2`}
+            onClick={() => onStepChange(step.value)}
+            isActive={currentStep === step.value}
+          >
+            <span className="text-2xl ltr:mr-2 rtl:ml-2">
+              <EmployeeMenuIcon
+                stepStatus={stepStatus[step.value].status}
+                stepValue={step.value}
+              />
+            </span>
+            <span>{step.label}</span>
+          </Menu.MenuItem>
+        );
+      })}
     </Menu>
   );
 };

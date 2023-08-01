@@ -51,6 +51,7 @@ const Header = (props) => {
 					variant="plain" 
 					className={classNames((!hasPrevious && renderCenter) && 'opacity-0 cursor-default')}
 					size="sm" 
+					type="button"
 					icon={<HiChevronLeft />}
 					disabled={!hasPrevious}
 					onClick={onPrevious}
@@ -60,6 +61,7 @@ const Header = (props) => {
 				{renderCenter && renderChildren}
 				<Button  
 					variant="plain"
+					type="button"
 					className={classNames((!hasNext && renderCenter) && 'opacity-0 cursor-default')}
 					size="sm" 
 					icon={<HiChevronRight />}
