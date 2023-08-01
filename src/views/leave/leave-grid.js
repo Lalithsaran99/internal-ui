@@ -1,23 +1,39 @@
-import { StatusCard } from "components/shared/StatusCard";
-import { leaveData } from "./data";
+import labelManager from "configs/label.config/label-manager";
+import { DataGrid, Form as DxForm } from "devextreme-react";
 
-export const LeaveGrid = () => {
+import {
+  Column,
+  Editing,
+  Popup,
+  SearchPanel,
+} from "devextreme-react/data-grid";
+import { LeaveForm } from "./leave-form";
+
+export const LeaveGrid = (props) => {
+  const { data } = props;
   return (
-    <div className="mt-2">
-      {leaveData?.map((leave, index) => (
-        <>
-          <p className="m-2">{leave?.month}</p>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-2">
-            {leave?.data?.map((data) => (
-              <StatusCard
-                leaveType={data?.leaveType}
-                date={data?.date}
-                status={data?.status}
-              />
-            ))}
-          </div>
-        </>
-      ))}
-    </div>
+    <DataGrid
+      dataSource={data}
+      keyExpr={labelManager.id}
+      allowColumnReordering={true}
+      showBorders={true}
+    >
+      <SearchPanel visible={true} />
+      <Editing
+        mode="popup"
+        allowUpdating={true}
+        allowAdding={true}
+        allowDeleting={true}
+      >
+        <Popup title="Employee Info" showTitle={true} width={700} height={525}>
+          <LeaveForm />
+        </Popup>
+      </Editing>
+
+      <Column dataField="leaveType" dataType="string" />
+      <Column dataField="date" dataType="string" />
+      <Column dataField="status" dataType="string" />
+      <Column dataField="month" dataType="string" />
+    </DataGrid>
   );
 };

@@ -3,6 +3,7 @@ export const labelConfig = {
     employees: "Employees",
     calendar: "Calendar",
     leave: "Leave",
+    id: "id",
     leaves: "Leaves",
     all: "All",
     allValue: "all",
