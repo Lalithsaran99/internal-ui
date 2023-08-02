@@ -4,6 +4,8 @@ import labelManager from "configs/label.config/label-manager";
 import { Field, Form, Formik } from "formik";
 import NumberFormat from "react-number-format";
 import * as Yup from "yup";
+import { ProfileFormHeader } from "../utils/FormHeader";
+import { AiOutlineSave } from "react-icons/ai";
 
 const excludedOccupation = ["unemployed", "student", "retired"];
 
@@ -42,6 +44,9 @@ const FinancialInformation = ({
   onComplete,
   onBackChange,
   currentStepStatus,
+  toggleMenu,
+  isOpen,
+  employeeName
 }) => {
   const onSubmit = (values, setSubmitting) => {
     onComplete?.(values, "financialInformation", setSubmitting);
@@ -53,10 +58,13 @@ const FinancialInformation = ({
 
   return (
     <>
-      <div className="mb-8">
-        <h3 className="mb-2">{labelManager.financialInfo.title}</h3>
-        <p>{labelManager.financialInfo.desc}</p>
-      </div>
+      <ProfileFormHeader
+        toggleMenu={toggleMenu}
+        employeeName={employeeName}
+        isOpen={isOpen}
+        title={labelManager.financialInfo.title}
+        desc={labelManager.financialInfo.desc}
+      />
       <Formik
         initialValues={data}
         enableReinitialize
@@ -164,6 +172,7 @@ const FinancialInformation = ({
                   positiveButtonLabel={labelManager.submit}
                   negativeButtonLabel={labelManager.back}
                   isNegativeButtonVisible={true}
+                  positiveButtonIcon={<AiOutlineSave />}
                   loading={isSubmitting}
                   onNegativeClick={onBack}
                 />

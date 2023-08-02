@@ -14,7 +14,7 @@ export const ResourceCell = (props) => {
   } = props;
 
   return (
-    <div className="flex justify-between">
+    <div className="flex items-center justify-between">
       <div className="p-2">
         <div className="w-32 h-32 avatar-circle">
           <img src={avatar} alt="avatar" />

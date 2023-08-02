@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setStepStatus } from "../store/dataSlice";
 import { setCurrentStep } from "../store/stateSlice";
 import { EmployeeMenuIcon } from "../utils/EmployeeMenuIcon";
+import labelManager from "configs/label.config/label-manager";
 
 const steps = [
   { label: "Personal information", value: 0 },
@@ -22,7 +23,10 @@ const FormStep = ({
   const onStepChange = (step) => {
     const selectedStepStatus = stepStatus[step].status;
 
-    if (selectedStepStatus === "complete" || selectedStepStatus === "current") {
+    if (
+      selectedStepStatus === "complete" ||
+      selectedStepStatus === labelManager.current
+    ) {
       dispatch(setCurrentStep(step));
       return;
     }

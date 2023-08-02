@@ -5,7 +5,7 @@ import {
   SegmentItemOption,
   SvgIcon,
 } from "components/shared";
-import { Badge, Button, FormContainer, FormItem, Segment } from "components/ui";
+import { Badge, FormContainer, FormItem, Segment } from "components/ui";
 import { Field, Form, Formik } from "formik";
 import useThemeClass from "utils/hooks/useThemeClass";
 
@@ -14,8 +14,11 @@ import labelManager from "configs/label.config/label-manager";
 import * as Yup from "yup";
 
 import { CollapseTopToBottom } from "components/shared/CollapseTopToBottom";
-import { useState } from "react";
 import { FormFooterButton } from "components/shared/FormFooterButton";
+import { useState } from "react";
+import { ProfileFormHeader } from "../utils/FormHeader";
+
+import { AiOutlineSave } from "react-icons/ai";
 
 const validationSchema = Yup.object().shape({
   documentType: Yup.string().required("Please select your document type"),
@@ -77,11 +80,22 @@ const Identification = ({
   onNextChange,
   onBackChange,
   currentStepStatus,
+  toggleMenu,
+  isOpen,
+  employeeName,
 }) => {
   const { textTheme, bgTheme } = useThemeClass();
 
   const [passportCollapse, setPassPortCollapse] = useState(false);
   const [passportDataCoverCollapse, setPassportDataCoverCollapse] =
+    useState(false);
+
+  const [nationalIdFrontCollapse, setNationalIdFrontCollapse] = useState(false);
+  const [nationalIdBackCollapse, setNationalIdBackCollapse] = useState(false);
+
+  const [drivingLicenseFrontCollapse, setDrivingLicenseFrontCollapse] =
+    useState(false);
+  const [drivingLicenseBackCollapse, setDrivingLicenseBackCollapse] =
     useState(false);
 
   const onNext = (values, setSubmitting) => {
@@ -98,6 +112,22 @@ const Identification = ({
 
   const onPassportDataCoverCollapse = () => {
     setPassportDataCoverCollapse(!passportDataCoverCollapse);
+  };
+
+  const onNationalIdFrontCollapse = () => {
+    setNationalIdFrontCollapse(!nationalIdFrontCollapse);
+  };
+
+  const onNationalIdBackCollapse = () => {
+    setNationalIdBackCollapse(!nationalIdBackCollapse);
+  };
+
+  const onDrivingLicenseFrontCollapse = () => {
+    setDrivingLicenseFrontCollapse(!drivingLicenseFrontCollapse);
+  };
+
+  const onDrivingLicenseBackCollapse = () => {
+    setDrivingLicenseBackCollapse(!drivingLicenseBackCollapse);
   };
 
   const beforeUpload = (files) => {
@@ -117,10 +147,14 @@ const Identification = ({
 
   return (
     <>
-      <div className="mb-8">
-        <h3 className="mb-2">Identification</h3>
-        <p>Upload relavant document to verify your identity.</p>
-      </div>
+      <ProfileFormHeader
+        toggleMenu={toggleMenu}
+        isOpen={isOpen}
+        employeeName={employeeName}
+        title={"Identification"}
+        desc={"Upload relavant document to verify your identity."}
+      />
+
       <Formik
         initialValues={data}
         enableReinitialize
@@ -226,7 +260,6 @@ const Identification = ({
                       >
                         <DocumentUploadField
                           name="passportCover"
-                          label="Passport Cover"
                           beforeUpload={beforeUpload}
                           {...validatedProps}
                         >
@@ -245,7 +278,6 @@ const Identification = ({
                       >
                         <DocumentUploadField
                           name="passportDataPage"
-                          label="Passport Data Page"
                           beforeUpload={beforeUpload}
                           {...validatedProps}
                         >
@@ -262,13 +294,12 @@ const Identification = ({
                   {values.documentType === "nationalId" && (
                     <>
                       <CollapseTopToBottom
-                        collapse={passportCollapse}
+                        collapse={nationalIdFrontCollapse}
                         title={"National Id Front"}
-                        onCollapse={onPassportCollapse}
+                        onCollapse={onNationalIdFrontCollapse}
                       >
                         <DocumentUploadField
                           name="nationalIdFront"
-                          label="National Id Front"
                           beforeUpload={beforeUpload}
                           {...validatedProps}
                         >
@@ -281,13 +312,12 @@ const Identification = ({
                         </DocumentUploadField>
                       </CollapseTopToBottom>
                       <CollapseTopToBottom
-                        collapse={passportCollapse}
+                        collapse={nationalIdBackCollapse}
                         title={"National Id Back"}
-                        onCollapse={onPassportCollapse}
+                        onCollapse={onNationalIdBackCollapse}
                       >
                         <DocumentUploadField
                           name="nationalIdBack"
-                          label="National Id Back"
                           beforeUpload={beforeUpload}
                           {...validatedProps}
                         >
@@ -304,13 +334,12 @@ const Identification = ({
                   {values.documentType === "driversLicense" && (
                     <>
                       <CollapseTopToBottom
-                        collapse={passportCollapse}
+                        collapse={drivingLicenseFrontCollapse}
                         title={"Drivers License Front"}
-                        onCollapse={onPassportCollapse}
+                        onCollapse={onDrivingLicenseFrontCollapse}
                       >
                         <DocumentUploadField
                           name="driversLicenseFront"
-                          label="Drivers License Front"
                           beforeUpload={beforeUpload}
                           {...validatedProps}
                         >
@@ -323,13 +352,12 @@ const Identification = ({
                         </DocumentUploadField>
                       </CollapseTopToBottom>
                       <CollapseTopToBottom
-                        collapse={passportCollapse}
+                        collapse={drivingLicenseBackCollapse}
                         title={"Drivers License Back"}
-                        onCollapse={onPassportCollapse}
+                        onCollapse={onDrivingLicenseBackCollapse}
                       >
                         <DocumentUploadField
                           name="driversLicenseBack"
-                          label="Drivers License Back"
                           beforeUpload={beforeUpload}
                           {...validatedProps}
                         >
@@ -348,9 +376,14 @@ const Identification = ({
                   negativeButtonLabel={labelManager.back}
                   isNegativeButtonVisible={true}
                   positiveButtonLabel={
-                    currentStepStatus === "complete"
+                    currentStepStatus === labelManager.complete
                       ? labelManager.save
                       : labelManager.next
+                  }
+                  positiveButtonIcon={
+                    currentStepStatus === labelManager.complete ? (
+                      <AiOutlineSave />
+                    ) : null
                   }
                   loading={isSubmitting}
                   onNegativeClick={onBack}

@@ -7,14 +7,16 @@ import {
   InputGroup,
   Select,
 } from "components/ui";
-import "./styles.css";
 import labelManager from "configs/label.config/label-manager";
 import { countryList } from "constants/countries.constant";
 import { Field, Form, Formik } from "formik";
+import { AiOutlineSave } from "react-icons/ai";
 import NumberFormat from "react-number-format";
 import { components } from "react-select";
 import * as Yup from "yup";
 import { statusOptions } from "../constants";
+import { ProfileFormHeader } from "../utils/FormHeader";
+import "./styles.css";
 
 const { SingleValue } = components;
 
@@ -25,7 +27,6 @@ const genderOptions = [
 ];
 
 const NumberInput = (props) => {
-  console.log(props);
   return <Input {...props} value={props.field.value} />;
 };
 
@@ -96,6 +97,9 @@ const personalInformation = ({
   },
   onNextChange,
   currentStepStatus,
+  toggleMenu,
+  isOpen,
+  employeeName,
 }) => {
   const onNext = (values, setSubmitting) => {
     onNextChange?.(values, "personalInformation", setSubmitting);
@@ -103,10 +107,13 @@ const personalInformation = ({
 
   return (
     <>
-      <div className="mb-8">
-        <h3 className="mb-2">{labelManager.personalInformationText}</h3>
-        <p>{labelManager.personalInfoDesc}</p>
-      </div>
+      <ProfileFormHeader
+        toggleMenu={toggleMenu}
+        isOpen={isOpen}
+        employeeName={employeeName}
+        title={labelManager.personalInformationText}
+        desc={labelManager.personalInfoDesc}
+      />
       <Formik
         initialValues={data}
         enableReinitialize={true}
@@ -336,9 +343,14 @@ const personalInformation = ({
                 </div>
                 <FormFooterButton
                   positiveButtonLabel={
-                    currentStepStatus === "complete"
+                    currentStepStatus === labelManager.complete
                       ? labelManager.save
                       : labelManager.next
+                  }
+                  positiveButtonIcon={
+                    currentStepStatus === labelManager.complete ? (
+                      <AiOutlineSave />
+                    ) : null
                   }
                   loading={isSubmitting}
                 />

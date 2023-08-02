@@ -1,9 +1,11 @@
-import { Button, FormContainer } from "components/ui";
+import { FormFooterButton } from "components/shared/FormFooterButton";
+import { FormContainer } from "components/ui";
 import labelManager from "configs/label.config/label-manager";
 import { Form, Formik } from "formik";
+import { AiOutlineSave } from "react-icons/ai";
 import * as Yup from "yup";
+import { ProfileFormHeader } from "../utils/FormHeader";
 import { AddressForm } from "../utils/address-form";
-import { FormFooterButton } from "components/shared/FormFooterButton";
 
 const validationSchema = Yup.object().shape({
   country: Yup.string().required("Please select country"),
@@ -36,6 +38,9 @@ const AddressInfomation = ({
   onFinish,
   onBackChange,
   currentStepStatus,
+  toggleMenu,
+  isOpen,
+  employeeName,
 }) => {
   const onNext = (values, setSubmitting) => {
     onNextChange?.(values, "addressInformation", setSubmitting);
@@ -51,10 +56,13 @@ const AddressInfomation = ({
 
   return (
     <>
-      <div className="mb-8">
-        <h3 className="mb-2">{labelManager.addressInfo.title}</h3>
-        <p>{labelManager.addressInfo.desc}</p>
-      </div>
+      <ProfileFormHeader
+        toggleMenu={toggleMenu}
+        employeeName={employeeName}
+        isOpen={isOpen}
+        title={labelManager.addressInfo.title}
+        desc={labelManager.addressInfo.desc}
+      />
       <Formik
         initialValues={data}
         enableReinitialize
@@ -91,9 +99,14 @@ const AddressInfomation = ({
                   isNegativeButtonVisible={true}
                   negativeButtonLabel={labelManager.back}
                   positiveButtonLabel={
-                    currentStepStatus === "complete"
+                    currentStepStatus === labelManager.complete
                       ? labelManager.save
                       : labelManager.next
+                  }
+                  positiveButtonIcon={
+                    currentStepStatus === labelManager.complete ? (
+                      <AiOutlineSave />
+                    ) : null
                   }
                   loading={isSubmitting}
                   onNegativeClick={onBack}

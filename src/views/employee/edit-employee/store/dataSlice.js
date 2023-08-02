@@ -63,8 +63,7 @@ const dataSlice = createSlice({
       0: { status: "pending" },
       1: { status: "pending" },
       2: { status: "pending" },
-      3: { status: "pending" },
-      4: { status: "pending" },
+      3: { status: "pending" },      
     },
   },
   reducers: {

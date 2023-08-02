@@ -11,6 +11,7 @@ import FormStep from "./components/FormStep";
 import reducer from "./store";
 import { setFormData, setStepStatus } from "./store/dataSlice";
 import { setCurrentStep } from "./store/stateSlice";
+import labelManager from "configs/label.config/label-manager";
 
 injectReducer("accountDetailForm", reducer);
 
@@ -58,8 +59,8 @@ const EditContact = () => {
     dispatch(setFormData({ [name]: values }));
     dispatch(
       setStepStatus({
-        [currentStep]: { status: "complete" },
-        [nextStep]: { status: "current" },
+        [currentStep]: { status: labelManager.complete },
+        [nextStep]: { status: labelManager.current },
       })
     );
     dispatch(setCurrentStep(nextStep));
@@ -88,16 +89,8 @@ const EditContact = () => {
   return (
     <Container className="h-full">
       <AdaptableCard className="h-full" bodyClass="h-full">
-        <BackButtonWithHeader header={employee?.name + `'s ` + "Profile"} />
-        {currentStep !== 4 && (
-          <Button
-            onClick={toggleMenu}
-            shape="circle"
-            variant="plain"
-            className={`${isOpen ? "hidden" : ""}`}
-            icon={<NavToggleArrow className="text-2xl" toggled={isOpen} />}
-          />
-        )}
+        <BackButtonWithHeader />
+
         <div
           className={`${
             isOpen
@@ -105,28 +98,20 @@ const EditContact = () => {
               : ""
           }`}
         >
-          {currentStep !== 4 && (
-            <div
-              className={`${
-                isOpen ? "flex justify-center" : "hidden"
-              } 2xl:col-span-1 xl:col-span-1 lg:col-span-2`}
-            >
-              <div className="w-full">
-                <FormStep
-                  currentStep={currentStep}
-                  sideCollapsed={isOpen}
-                  currentStepStatus={currentStepStatus}
-                  stepStatus={stepStatus}
-                />
-              </div>
-              <Button
-                onClick={toggleMenu}
-                shape="circle"
-                variant="plain"
-                icon={<NavToggleArrow className="text-2xl" toggled={isOpen} />}
+          <div
+            className={`${
+              isOpen ? "flex justify-center" : "hidden"
+            } 2xl:col-span-1 xl:col-span-1 lg:col-span-2`}
+          >
+            <div className="w-full">
+              <FormStep
+                currentStep={currentStep}
+                sideCollapsed={isOpen}
+                currentStepStatus={currentStepStatus}
+                stepStatus={stepStatus}
               />
             </div>
-          )}
+          </div>
 
           <div
             className={
@@ -138,33 +123,45 @@ const EditContact = () => {
             <Suspense fallback={<></>}>
               {currentStep === 0 && (
                 <PersonalInformation
-                  data={formData.personalInformation}
+                  // data={formData.personalInformation}
                   onNextChange={handleNextChange}
                   currentStepStatus={currentStepStatus}
+                  toggleMenu={toggleMenu}
+                  employeeName={employee?.name}
+                  isOpen={isOpen}
                 />
               )}
               {currentStep === 1 && (
                 <Identification
-                  data={formData.identification}
+                  // data={formData.identification}
                   onNextChange={handleNextChange}
                   onBackChange={handleBackChange}
                   currentStepStatus={currentStepStatus}
+                  toggleMenu={toggleMenu}
+                  employeeName={employee?.name}
+                  isOpen={isOpen}
                 />
               )}
               {currentStep === 2 && (
                 <AddressInfomation
-                  data={formData.addressInformation}
+                  // data={formData.addressInformation}
                   onNextChange={handleNextChange}
                   onBackChange={handleBackChange}
                   currentStepStatus={currentStepStatus}
+                  toggleMenu={toggleMenu}
+                  employeeName={employee?.name}
+                  isOpen={isOpen}
                 />
               )}
               {currentStep === 3 && (
                 <FinancialInformation
-                  data={formData.financialInformation}
+                  // data={formData.financialInformation}
                   onComplete={onComplete}
                   onBackChange={handleBackChange}
                   currentStepStatus={currentStepStatus}
+                  toggleMenu={toggleMenu}
+                  employeeName={employee?.name}
+                  isOpen={isOpen}
                 />
               )}
             </Suspense>

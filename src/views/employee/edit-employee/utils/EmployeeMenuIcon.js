@@ -1,3 +1,4 @@
+import labelManager from "configs/label.config/label-manager";
 import {
   HiOutlineCurrencyDollar,
   HiOutlineHome,
@@ -18,17 +19,17 @@ export const EmployeeMenuIcon = (props) => {
 
   return (
     <>
-      {stepStatus === "complete" && (
+      {stepStatus === labelManager.complete && (
         <div className={textTheme}>{navigationIcon[stepValue]}</div>
       )}
-      {stepStatus === "current" && (
+      {stepStatus === labelManager.current && (
         <div className="text-gray-400">{navigationIcon[stepValue]}</div>
       )}
-      {stepStatus === "pending" && (
+      {stepStatus === labelManager.pending && (
         <div className="text-gray-400">{navigationIcon[stepValue]}</div>
       )}
 
-      {stepStatus === "invalid" && (
+      {stepStatus === labelManager.invalid && (
         <div className="text-gray-400">{navigationIcon[stepValue]}</div>
       )}
     </>

@@ -17,7 +17,12 @@ export const FormFooterButton = (props) => {
           {negativeButtonLabel}
         </Button>
       )}
-      <Button loading={loading} variant="solid" type="submit">
+      <Button
+        loading={loading}
+        variant="solid"
+        type="submit"
+        icon={positiveButtonIcon ? positiveButtonIcon : null}
+      >
         {positiveButtonLabel}
       </Button>
     </div>
