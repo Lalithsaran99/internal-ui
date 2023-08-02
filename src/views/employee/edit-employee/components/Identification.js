@@ -1,4 +1,4 @@
-import { Badge, FormContainer, FormItem } from "components/ui";
+import { Badge, FormContainer, FormItem, Select } from "components/ui";
 import { Field, Form, Formik } from "formik";
 import useThemeClass from "utils/hooks/useThemeClass";
 
@@ -97,9 +97,14 @@ const Identification = ({
       >
         {({ values, touched, errors, isSubmitting }) => {
           const validatedProps = { touched, errors };
+          console.log(values.documentType);
           const documentTypes = documentUploadDetails.find(
             (value) => value.value === values.documentType
           );
+          const documentTypesForSelect = documentUploadDetails?.map((data) => ({
+            value: data?.value,
+            label: data?.label,
+          }));
           return (
             <Form>
               <FormContainer>
@@ -111,10 +116,19 @@ const Identification = ({
                 >
                   <Field name={labelManager.identityInfo.documentTypeLowerCase}>
                     {({ field, form }) => (
-                      <DocumentSegmenter
-                        data={documentUploadDetails}
-                        form={form}
+                      <Select
+                        placeholder={
+                          labelManager.identityInfo.documentTypeHeader
+                        }
                         field={field}
+                        form={form}
+                        options={documentTypesForSelect}
+                        value={documentTypesForSelect.filter(
+                          (document) => document.value === values.documentType
+                        )}
+                        onChange={(document) =>
+                          form.setFieldValue(field.name, document.value)
+                        }
                       />
                     )}
                   </Field>
