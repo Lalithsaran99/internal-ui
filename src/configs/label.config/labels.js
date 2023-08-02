@@ -38,6 +38,8 @@ export const labelConfig = {
     back: "Back",
     personalInformationText: "Personal Information",
     personalInfoDesc: "Basic information for an account opening",
+    documentUploadInstructions:
+      "In order to complete upload and avoid delays when verifying account, Please make sure below:",
     personalInformation: {
       firstName: "First Name",
       lastName: "Last Name",
