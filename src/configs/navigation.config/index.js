@@ -29,7 +29,7 @@ const navigationConfig = [
   {
     key: "leave",
     path: "/leave",
-    title: labelManager.leave,
+    title: labelManager.leaves,
     translateKey: "nav.leave",
     icon: "leave",
     type: NAV_ITEM_TYPE_ITEM,
