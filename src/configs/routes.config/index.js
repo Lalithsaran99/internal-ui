@@ -34,6 +34,12 @@ export const protectedRoutes = [
     path: "/leave",
     component: React.lazy(() => import("../../views/leave")),
   },
+
+  {
+    key: "applicant",
+    path: "/applicant",
+    component: React.lazy(() => import("../../views/applicant")),
+  },
   /** Example purpose only */
   // {
   //     key: 'singleMenuItem',

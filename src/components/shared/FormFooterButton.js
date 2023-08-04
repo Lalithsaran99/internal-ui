@@ -3,6 +3,7 @@ import { Button } from "components/ui";
 export const FormFooterButton = (props) => {
   const {
     onNegativeClick,
+    onPositiveClick,
     isNegativeButtonVisible,
     negativeButtonLabel,
     positiveButtonLabel,
@@ -21,6 +22,7 @@ export const FormFooterButton = (props) => {
         loading={loading}
         variant="solid"
         type="submit"
+        onClick={() => onPositiveClick?.()}
         icon={positiveButtonIcon ? positiveButtonIcon : null}
       >
         {positiveButtonLabel}

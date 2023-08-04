@@ -36,6 +36,16 @@ const navigationConfig = [
     authority: [],
     subMenu: [],
   },
+  {
+    key: "applicant",
+    path: "/applicant",
+    title: labelManager.applicants,
+    translateKey: "nav.applicant",
+    icon: "applicant",
+    type: NAV_ITEM_TYPE_ITEM,
+    authority: [],
+    subMenu: [],
+  },
   /** Example purpose only */
   // {
   //     key: 'singleMenuItem',

@@ -1,6 +1,28 @@
 export const labelConfig = {
   alferix: {
     employees: "Employees",
+    applicants: "Applicants",
+    applicant: "Applicant",
+    dialCodeValue: "dialCode",
+    dialCodeLabel: "Dial Code",
+    mobileNoValue: "mobileNo",
+    mobileNoLabel: "Mobile Number",
+    emailLabel: "Email",
+    emailValue: "email",
+
+    cancel: "Cancel",
+    create: "Create",
+    update: "Update",
+    nameValue: "name",
+    firstNameLabel: "First Name",
+    firstNameValue: "firstName",
+    lastNameValue: "lastName",
+    lastNameLabel: "Last Name",
+    applicantData: {
+      name: "Name",
+      mobileNo: "Mobile Number",
+      documentsToBeUploaded: "Documents To Be Uploaded",
+    },
     calendar: "Calendar",
     leave: "Leave",
     id: "id",
