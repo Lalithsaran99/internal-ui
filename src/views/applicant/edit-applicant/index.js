@@ -3,35 +3,28 @@ import { BackButtonWithHeader } from "components/shared/BackButtonWithHeader";
 import labelManager from "configs/label.config/label-manager";
 import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { people } from "../data";
-import FormStep from "./components/FormStep";
-import { employeeSteps } from "./data";
+
+import { applicantSteps } from "./data";
+import FormStep from "views/employee/edit-employee/components/FormStep";
+import { people } from "views/employee/data";
+import { DocumentsToBeUploaded } from "./components/DocumentsToBeUploaded";
 
 const PersonalInformation = lazy(() =>
   import("./components/PersonalInformation")
 );
-const Identification = lazy(() => import("./components/Identification"));
-const AddressInfomation = lazy(() => import("./components/AddressInfomation"));
-const FinancialInformation = lazy(() =>
-  import("./components/FinancialInformation")
-);
 
-const EditContact = () => {
+const EditApplicant = () => {
   const [isOpen, setIsOpen] = useState(true);
   const params = useParams();
   const [employee, setEmployee] = useState();
+
   const navigate = useNavigate();
   const pending = labelManager.pending;
   const [stepStatus, setStepStatus] = useState({
     0: { status: pending },
     1: { status: pending },
-    2: { status: pending },
-    3: { status: pending },
   });
   const [currentStep, setCurrentStep] = useState(0);
-  // const formData = useSelector(
-  //   (state) => state.accountDetailForm.data.formData
-  // );
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -94,10 +87,8 @@ const EditContact = () => {
               <FormStep
                 currentStep={currentStep}
                 sideCollapsed={isOpen}
-                steps={employeeSteps}
+                steps={applicantSteps}
                 currentStepStatus={currentStepStatus}
-                setCurrentStep={setCurrentStep}
-                setStepStatus={setStepStatus}
                 stepStatus={stepStatus}
               />
             </div>
@@ -122,35 +113,12 @@ const EditContact = () => {
                 />
               )}
               {currentStep === 1 && (
-                <Identification
-                  // data={formData.identification}
-                  onNextChange={handleNextChange}
-                  onBackChange={handleBackChange}
-                  currentStepStatus={currentStepStatus}
-                  toggleMenu={toggleMenu}
-                  employeeName={employee?.name}
-                  isOpen={isOpen}
-                />
-              )}
-              {currentStep === 2 && (
-                <AddressInfomation
-                  // data={formData.addressInformation}
-                  onNextChange={handleNextChange}
-                  onBackChange={handleBackChange}
-                  currentStepStatus={currentStepStatus}
-                  toggleMenu={toggleMenu}
-                  employeeName={employee?.name}
-                  isOpen={isOpen}
-                />
-              )}
-              {currentStep === 3 && (
-                <FinancialInformation
-                  // data={formData.financialInformation}
+                <DocumentsToBeUploaded
                   onComplete={onComplete}
-                  onBackChange={handleBackChange}
                   currentStepStatus={currentStepStatus}
+                  onBackChange={handleBackChange}
                   toggleMenu={toggleMenu}
-                  employeeName={employee?.name}
+                  applicantName={employee?.name}
                   isOpen={isOpen}
                 />
               )}
@@ -162,4 +130,4 @@ const EditContact = () => {
   );
 };
 
-export default EditContact;
+export default EditApplicant;

@@ -40,6 +40,12 @@ export const protectedRoutes = [
     path: "/applicant",
     component: React.lazy(() => import("../../views/applicant")),
   },
+
+  {
+    key: "applicant.create",
+    path: "/applicant/create",
+    component: React.lazy(() => import("../../views/applicant/edit-applicant")),
+  },
   /** Example purpose only */
   // {
   //     key: 'singleMenuItem',

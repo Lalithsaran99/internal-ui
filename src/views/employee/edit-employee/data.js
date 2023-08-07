@@ -1,11 +1,20 @@
-import { NationalIdSvg } from "assets/svg";
+export const employeeSteps = [
+  { label: "Personal information", value: 0 },
+  { label: "Identification", value: 1 },
+  { label: "Address Information", value: 2 },
+  { label: "Financial Information", value: 3 },
+];
+
+export const fileTypes = [
+  { value: "image/jpeg", label: "image/jpeg" },
+  { value: "image/png", label: "image/png" },
+];
 
 export const documentUploadDetails = [
   {
     value: "aadharId",
     label: "Aadhar Id",
     allowedFileType: ["image/jpeg", "image/png"],
-    icon: <NationalIdSvg />,
     uploadDescription: [
       "Uploaded aadhar image must be clearly visible & complete",
       "Passport must in valid period",
@@ -44,7 +53,7 @@ export const documentUploadDetails = [
     allowedFileType: ["image/jpeg", "image/png"],
 
     uploadDescription: [
-     "Uploaded Payroll must have company name and salary deductions"
+      "Uploaded Payroll must have company name and salary deductions",
     ],
     allowedFileTypeError: "Please upload a .jpeg or .png file!",
   },

@@ -1,44 +1,31 @@
 import { Menu } from "components/ui";
-import { useDispatch } from "react-redux";
+import labelManager from "configs/label.config/label-manager";
 import { setStepStatus } from "../store/dataSlice";
 import { setCurrentStep } from "../store/stateSlice";
 import { EmployeeMenuIcon } from "../utils/EmployeeMenuIcon";
-import labelManager from "configs/label.config/label-manager";
 
-const steps = [
-  { label: "Personal information", value: 0 },
-  { label: "Identification", value: 1 },
-  { label: "Address Information", value: 2 },
-  { label: "Financial Information", value: 3 },
-];
-
-const FormStep = ({
-  currentStep,
-  currentStepStatus,
-  sideCollapsed,
-  stepStatus,
-}) => {
-  const dispatch = useDispatch();
+const FormStep = (props) => {
+  const { currentStep, currentStepStatus, sideCollapsed, stepStatus, steps } =
+    props;
 
   const onStepChange = (step) => {
     const selectedStepStatus = stepStatus[step].status;
 
     if (
-      selectedStepStatus === "complete" ||
+      selectedStepStatus === labelManager.complete ||
       selectedStepStatus === labelManager.current
     ) {
-      dispatch(setCurrentStep(step));
+      setCurrentStep(step);
       return;
     }
 
     if (step !== currentStep && step < currentStep) {
-      if (currentStepStatus === "pending") {
-        dispatch(setStepStatus("complete"));
+      if (currentStepStatus === labelManager.pending) {
+        setStepStatus(labelManager.complete);
       }
-      dispatch(setCurrentStep(step));
+      setCurrentStep(step);
     }
   };
-
   return (
     <Menu variant="transparent" sideCollapsed={sideCollapsed} className="px-2">
       {steps.map((step) => {
@@ -52,11 +39,11 @@ const FormStep = ({
           >
             <span className="text-2xl ltr:mr-2 rtl:ml-2">
               <EmployeeMenuIcon
-                stepStatus={stepStatus[step.value].status}
+                stepStatus={stepStatus[step.value]?.status}
                 stepValue={step.value}
               />
             </span>
-            <span>{step.label}</span>
+            <span className="truncate">{step.label}</span>
           </Menu.MenuItem>
         );
       })}

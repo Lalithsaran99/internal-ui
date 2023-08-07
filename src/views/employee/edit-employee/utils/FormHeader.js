@@ -15,8 +15,11 @@ export const ProfileFormHeader = (props) => {
           />
         </Tooltip>
         <div className="flex flex-col">
-          <h3 className="mb-2">{employeeName + `'s ` + title}</h3>
-
+          {employeeName ? (
+            <h3 className="mb-2">{employeeName + `'s ` + title}</h3>
+          ) : (
+            <h3 className="mb-2">{title}</h3>
+          )}
           <p>{desc}</p>
         </div>
       </div>
